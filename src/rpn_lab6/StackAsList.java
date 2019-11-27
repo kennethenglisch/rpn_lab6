@@ -25,7 +25,7 @@ public class StackAsList implements Stack {
 	}
 
 	public void Empty() {
-		stackList = new List;
+		stackList = new List();
 	}
 
 }
