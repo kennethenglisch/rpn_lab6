@@ -1,9 +1,31 @@
 package rpn_lab6;
 
-public class StackAsList {
+public class StackAsList implements Stack {
 
+	private List stackList;
+	
 	public StackAsList() {
-		// TODO Auto-generated constructor stub
+		this.Empty();
+	}
+
+	public void push(Object o) throws StackOverflow {
+
+	}
+
+	public void pop() throws StackUnderflow {
+
+	}
+
+	public Object top() throws StackUnderflow {
+		return null;
+	}
+
+	public boolean isEmpty() {
+		return false;
+	}
+
+	public void Empty() {
+		stackList = new List;
 	}
 
 }
