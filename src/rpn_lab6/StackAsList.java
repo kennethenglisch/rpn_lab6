@@ -3,21 +3,21 @@ package rpn_lab6;
 public class StackAsList implements Stack {
 
 	private List stackList;
-	
+
 	public StackAsList() {
 		Empty();
 	}
 
 	public void push(Object obj) throws StackOverflow {
-		// not throwing any exception here, because the list is infinite and 
+		// not throwing any exception here, because the list is infinite and
 		// there can't be a StackOverflow unless the memory is full
 		stackList.add(obj);
 	}
 
 	public void pop() throws StackUnderflow {
-		if (stackList.isEmpty()) 
+		if (stackList.isEmpty())
 			throw new StackUnderflow();
-		else 
+		else
 			stackList.remove();
 	}
 
@@ -36,9 +36,9 @@ public class StackAsList implements Stack {
 		stackList = new List();
 	}
 
-	public String toString() 
+	public String toString()
 	{
 		return stackList.print("Top: ", " :Bottom");
 	}
-	
+
 }
