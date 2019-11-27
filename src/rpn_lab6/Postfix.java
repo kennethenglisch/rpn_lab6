@@ -10,7 +10,7 @@ public class Postfix {
 	}
 
 	public static void main(String[] args) throws StackUnderflow, StackOverflow {
-		String ifx = "1*2+3";
+		String ifx = "1+2-(3*2)";
 		String rpn = "";
 		Postfix fix = new Postfix();
 		rpn = fix.infixToPostfix(ifx);
@@ -47,25 +47,35 @@ public class Postfix {
 		for (n = length; n > 0; n--) {
 			int end = (length - n) + 1;
 
+			if (ifx.substring(i, end).equals("(") || ifx.substring(i, end).equals(")"))
+				i++;
+
 			String h = ifx.substring(i, end);
 
-			if (!(h.equals("+") || h.equals("-") || h.equals("*") || h.equals("/"))) {
-				postFix += h;
-			}
-			if (postFixStack.isEmpty() == false) {
-				if (postFixStack.top().equals("") || postFixStack.top().equals("-")|| postFixStack.top().equals("*")
-						|| postFixStack.top().equals("/")) {
-					if (h.equals("+") || h.equals("-")) {
-						postFix += postFixStack.top();
-						postFixStack.pop();
-						postFixStack.push(h);
-					}
-				}
-			} else if (h.equals("+") || h.equals("-") || h.equals("*") || h.equals("/")) {
-				postFixStack.push(h);
-			}
 
-			i++;
+				if (!(h.equals("+") || h.equals("-") || h.equals("*") || h.equals("/"))) {
+
+					postFix += h;
+				}
+				if (!postFixStack.isEmpty()) {
+					if (postFixStack.top().equals("+") || postFixStack.top().equals("-")
+							|| postFixStack.top().equals("*") || postFixStack.top().equals("/")) {
+						if (h.equals("+") || h.equals("-")) {
+							postFix += postFixStack.top();
+							postFixStack.pop();
+							postFixStack.push(h);
+						}
+					}
+				} else if (h.equals("+") || h.equals("-") || h.equals("*") || h.equals("/")) {
+					postFixStack.push(h);
+				}
+
+				i++;
+			}
+		
+		if (!postFixStack.isEmpty()) {
+			postFix += postFixStack.top();
+			postFixStack.pop();
 		}
 		return postFix;
 	}
