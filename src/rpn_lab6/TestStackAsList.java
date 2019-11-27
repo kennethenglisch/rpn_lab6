@@ -6,7 +6,10 @@ public class TestStackAsList {
 	
 	public TestStackAsList() throws StackOverflow, StackUnderflow
 	{
-		testAdd();
+		// create the list
+		myList = new StackAsList();
+		
+		test();
 	}
 	
 	public static void main (String args[]) throws StackOverflow, StackUnderflow
@@ -24,13 +27,17 @@ public class TestStackAsList {
 	 * @throws StackOverflow 
 	 * 
 	 * @note printing out will print out the memory address instead of the Object
+	 * @note fixed the error above
 	 */
 
 	
-	private void testAdd() throws StackOverflow, StackUnderflow
+	private void test() throws StackOverflow, StackUnderflow
 	{
-		// create the list
-		myList = new StackAsList();
+		// check if it is empty
+		if (myList.isEmpty()) 
+			System.out.println("Yeah, the list is empty!\n");
+		else
+			System.out.println("Oops, this list should be empty!\n");
 		
 		// create Objects
 		int i = 42;
@@ -38,31 +45,51 @@ public class TestStackAsList {
 		String foo = "foo";
 		String bar = "bar";
 		
-		// printing put the empty list
-		System.out.println(myList.toString());
+		// printing out the empty list
+		System.out.println("Expected Output -> [ Top:  :Bottom ]");
+		System.out.println("Actual Output   -> " + myList.toString() + "\n");
 
 		myList.push(i);
 		myList.push(j);
 		
-		System.out.println(myList.toString());
-		System.out.println("Top Element: " + myList.top());
+		System.out.println("Expected Output -> [ Top: 4711, 42 :Bottom ]");
+		System.out.println("Actual Output   -> " + myList.toString() + "\n");
+		// the top element should be j = 4711
+		System.out.println(topElement(j) + "\n");
 		
 		myList.push(foo);
 		myList.push(bar);
 		
-		System.out.println(myList.toString());
-		System.out.println("Top Element: " + myList.top());
+		System.out.println("Expected Output -> [ Top: bar, foo, 4711, 42 :Bottom ]");
+		System.out.println("Actual Output   -> " + myList.toString() + "\n");
+		System.out.println(topElement(bar) + "\n");
 		
 		// pop an element from the list
 		myList.pop();
 		
-		System.out.println(myList.toString());
-		System.out.println("Top Element: " + myList.top());
+		System.out.println("Expected Output -> [ Top: foo, 4711, 42 :Bottom ]");
+		System.out.println("Actual Output   -> " + myList.toString() + "\n");
+		System.out.println(topElement(foo) + "\n");
 		
 		myList.pop();
 		
-		System.out.println(myList.toString());
-		System.out.println("Top Element: " + myList.top());
+		System.out.println("Expected Output -> [ Top: 4711, 42 :Bottom ]");
+		System.out.println("Actual Output   -> " + myList.toString() + "\n");
+		System.out.println(topElement(j) + "\n");
+		
+		// check if it is empty
+		if (myList.isEmpty()) 
+			System.out.println("Oops, this list should not be empty!\n");
+		else
+			System.out.println("Yeah, the list is not empty!\n");
+	}
+	
+	private String topElement(Object obj) throws StackUnderflow 
+	{
+		if (myList.top().equals(obj))
+			return "Yay the top element is the element: " + obj.toString();
+		else 
+			return "Something went wrong. The actual top element is: " + obj.toString();
 		
 	}
 	
