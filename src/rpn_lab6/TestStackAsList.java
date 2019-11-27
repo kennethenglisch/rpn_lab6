@@ -23,6 +23,8 @@ public class TestStackAsList {
 	 * -> print out List
 	 * -> get top element of the list
 	 * @throws StackOverflow 
+	 * 
+	 * @note printing out will print out the memory address instead of the Object
 	 */
 
 	
