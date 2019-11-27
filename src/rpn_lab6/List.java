@@ -2,7 +2,7 @@ package rpn_lab6;
 
 public class List {
 
-	public Node head, current, previous;
+	private Node head, current, previous;
 	private int size;
 	
 	public List() {
@@ -19,34 +19,27 @@ public class List {
 	 */
 	public void add(Object obj) 
 	{
-		Node n = new Node(obj, head);
-		head = n;
-		
-		previous = null;
-		current = head;
-		size += 1;
+			Node n = new Node(obj, head);
+			head = n;
+			previous = null;
+			current = head;
+			
+			size += 1;
 	}
-
+	
 	public void remove() 
 	{
-		if (isEmpty() || current == null) 
-		{
+		reset(); // reset because we always want to remove the first object
+		
+		if (isEmpty()) 
 			return;
-		}
 		else 
 		{
-			if(previous == null) 
-			{
-				head = current.next;
-				current = head;
-			}
-			else 
-			{
-				previous.next = current.next;
-				current = current.next;
-			}
+			head = current.next;
+			current = head;
+
+			size -= 1;
 		}
-		size -= 1;
 	}
 	
 	public boolean isEmpty() 
@@ -62,10 +55,10 @@ public class List {
 	public void moveOn() 
 	{
 		current = current.next;
-		if (previous == null)
-			previous = head;
-		else
-			previous = previous.next;
+		  if (previous == null)
+		    previous = head;
+		  else
+		    previous = previous.next;
 	}
 	
 	public boolean isLastMember() 
@@ -89,12 +82,15 @@ public class List {
 	 * @credits https://people.f4.htw-berlin.de/~weberwu/info2/Handouts/List.java
 	 */
 	public String print(String open, String close) 
-	{	
+	{
 		String s = (open == "")?"[ ":open;
-		for (reset(); !isLastMember(); this.moveOn()){
+		for (this.reset();!this.isLastMember();this.moveOn()){
 			// this wastes a lot of system data
 			s = s + current.data + ((current.next != null)?", ":"");
 		}
+		
+//		reset();
+		
 		return s + ((close == "")?" ]":close);
 	}
 }

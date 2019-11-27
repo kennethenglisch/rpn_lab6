@@ -4,8 +4,6 @@ public class TestStackAsList {
 
 	private StackAsList myList;
 	
-	private Node n1, n2, n3, n4;
-	
 	public TestStackAsList() throws StackOverflow, StackUnderflow
 	{
 		testAdd();
@@ -34,34 +32,39 @@ public class TestStackAsList {
 		// create the list
 		myList = new StackAsList();
 		
-		// create the nodes
-		createNodes();
+		// create Objects
+		int i = 42;
+		int j = 4711;
+		String foo = "foo";
+		String bar = "bar";
 		
 		// printing put the empty list
 		System.out.println(myList.toString());
-//		System.out.println(myList.top());
-		
-		// adding nodes to it
-		myList.push(n1);
-		myList.push(n2);
+
+		myList.push(i);
+		myList.push(j);
 		
 		System.out.println(myList.toString());
-		System.out.println(myList.top());
+		System.out.println("Top Element: " + myList.top());
 		
-		myList.push(n3);
-		myList.push(n4);
+		myList.push(foo);
+		myList.push(bar);
 		
 		System.out.println(myList.toString());
-		System.out.println(myList.top());
+		System.out.println("Top Element: " + myList.top());
+		
+		// pop an element from the list
+		myList.pop();
+		
+		System.out.println(myList.toString());
+		System.out.println("Top Element: " + myList.top());
+		
+		myList.pop();
+		
+		System.out.println(myList.toString());
+		System.out.println("Top Element: " + myList.top());
+		
 	}
 	
-	private void createNodes() 
-	{
-		n1 = new Node("test");
-		n2 = new Node("bla");
-		n3 = new Node("foo");
-		n4 = new Node("bar");
-		
-//		System.out.println(n1.data);
-	}
+
 }
