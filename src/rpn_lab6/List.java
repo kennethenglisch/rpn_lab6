@@ -72,9 +72,9 @@ public class List {
 		return (current == null);
 	}
 	
-	public Node firstElement() 
+	public Object firstElement() 
 	{
-		return head;
+		return head.data;
 	}
 	
 	public void reset() 
