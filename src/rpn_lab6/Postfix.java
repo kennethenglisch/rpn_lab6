@@ -3,6 +3,7 @@ package rpn_lab6;
 public class Postfix {
 
 	private StackAsList postFixStack;
+	private StackAsList expression;
 
 	public Postfix() {
 		// TODO Auto-generated constructor stub
@@ -17,6 +18,21 @@ public class Postfix {
 	}
 
 	public int evaluate(String pfx) {
+		expression = new StackAsList();
+		int n = 0;
+		int i = 0;
+		int length = pfx.length();
+
+		for (n = length; n > 0; n--) {
+			int end = (length - n) + 1;
+
+			String h = pfx.substring(i, end);
+
+			if (!(h.equals("+") || h.equals("-") || h.equals("*") || h.equals("/"))) {
+				int value = Integer.parseInt(h);
+
+			}
+		}
 
 		return 0;
 	}
@@ -24,32 +40,29 @@ public class Postfix {
 	public String infixToPostfix(String ifx) throws StackUnderflow, StackOverflow {
 		postFixStack = new StackAsList();
 		String postFix = "";
-		String expression = ifx;
 		int n = 0;
 		int i = 0;
-		int length = expression.length();
-
-		String[] operator = { "+", "-", "*", "/" };
+		int length = ifx.length();
 
 		for (n = length; n > 0; n--) {
 			int end = (length - n) + 1;
 
-			String h = expression.substring(i, end);
+			String h = ifx.substring(i, end);
 
-			if (!postFixStack.isEmpty()) {
-				if (postFixStack.top() == "*" || postFixStack.top() == "/" || postFixStack.top() == "+"
-						|| postFixStack.top() == "-" && h.equals("+") || h.equals("-")) {
-					postFix += postFixStack.top();
-					postFixStack.pop();
-					postFixStack.push(h);
-				} else {
-					postFixStack.push(h);
+			if (!(h.equals("+") || h.equals("-") || h.equals("*") || h.equals("/"))) {
+				postFix += h;
+			}
+			if (postFixStack.isEmpty() == false) {
+				if (postFixStack.top().equals("") || postFixStack.top().equals("-")|| postFixStack.top().equals("*")
+						|| postFixStack.top().equals("/")) {
+					if (h.equals("+") || h.equals("-")) {
+						postFix += postFixStack.top();
+						postFixStack.pop();
+						postFixStack.push(h);
+					}
 				}
-			} else {
-				if (!(h.equals("+") || h.equals("-") || h.equals("*") || h.equals("/"))) {
-					postFix += h;
-				}
-
+			} else if (h.equals("+") || h.equals("-") || h.equals("*") || h.equals("/")) {
+				postFixStack.push(h);
 			}
 
 			i++;
