@@ -10,7 +10,7 @@ public class Postfix {
 	}
 
 	public static void main(String[] args) throws StackUnderflow, StackOverflow {
-		String ifx = "1+2-(3*2)";
+		String ifx = "1*2-3*2";
 		String rpn = "";
 		Postfix fix = new Postfix();
 		rpn = fix.infixToPostfix(ifx);
@@ -46,9 +46,6 @@ public class Postfix {
 
 		for (n = length; n > 0; n--) {
 			int end = (length - n) + 1;
-
-			if (ifx.substring(i, end).equals("(") || ifx.substring(i, end).equals(")"))
-				i++;
 
 			String h = ifx.substring(i, end);
 
