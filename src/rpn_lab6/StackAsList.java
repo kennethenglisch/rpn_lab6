@@ -21,7 +21,7 @@ public class StackAsList implements Stack {
 	}
 
 	public boolean isEmpty() {
-		return false;
+		return true;
 	}
 
 	public void Empty() {
