@@ -2,7 +2,7 @@ package rpn_lab6;
 
 public class List {
 
-	private Node head, current, previous;
+	public Node head, current, previous;
 	private int size;
 	
 	public List() {
@@ -21,19 +21,20 @@ public class List {
 	{
 		Node n = new Node(obj, head);
 		head = n;
-		size += 1;
 		
-		reset();
+		previous = null;
+		current = head;
+		size += 1;
 	}
 
 	public void remove() 
 	{
-//		if (isEmpty() || current == null) 
-//		{
-//			return;
-//		}
-//		else 
-//		{
+		if (isEmpty() || current == null) 
+		{
+			return;
+		}
+		else 
+		{
 			if(previous == null) 
 			{
 				head = current.next;
@@ -44,7 +45,7 @@ public class List {
 				previous.next = current.next;
 				current = current.next;
 			}
-//		}
+		}
 		size -= 1;
 	}
 	
@@ -72,9 +73,9 @@ public class List {
 		return (current == null);
 	}
 	
-	public Node firstElement() 
+	public Object firstElement() 
 	{
-		return head;
+		return head.data;
 	}
 	
 	public void reset() 
@@ -96,5 +97,4 @@ public class List {
 		}
 		return s + ((close == "")?" ]":close);
 	}
-	
 }
