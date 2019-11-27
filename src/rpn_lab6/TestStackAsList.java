@@ -61,7 +61,5 @@ public class TestStackAsList {
 		n2 = new Node("bla");
 		n3 = new Node("foo");
 		n4 = new Node("bar");
-		
-//		System.out.println(n1.data);
 	}
 }

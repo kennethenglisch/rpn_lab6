@@ -45,8 +45,9 @@ public class List {
 				previous.next = current.next;
 				current = current.next;
 			}
+			size -= 1;
 		}
-		size -= 1;
+		
 	}
 	
 	public boolean isEmpty() 
