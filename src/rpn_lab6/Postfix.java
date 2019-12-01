@@ -25,7 +25,7 @@ public class Postfix {
 
 		for (int n = pfx.length(); n > 0; n--) {
 			Character c = pfx.charAt(++a);
-			if (Character.isLetterOrDigit(c)) {
+			if (Character.isDigit(c)) {
 				expression.push(Character.getNumericValue(c));
 			} else if ((int) c == checkOperator(c) || (int) c + 6 == 48) {
 				int lhs = 0;
