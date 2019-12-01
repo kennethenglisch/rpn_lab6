@@ -10,12 +10,13 @@ public class Postfix {
 	final private Character[] operator = { '+', '-', '*', '/', '^' };
 
 	public static void main(String[] args) throws StackUnderflow, StackOverflow {
-		String ifx = "1+2+3/4+5+6*(7+8)";
+		/*String ifx = "1+2+3/4+5+6*(7+8)";
 		String rpn = "";
-		Postfix fix = new Postfix();
+		
 		rpn = fix.infixToPostfix(ifx);
 		System.out.println(rpn);
-		System.out.println(fix.evaluate(rpn));
+		System.out.println(fix.evaluate(rpn));*/
+		Postfix fix = new Postfix();
 		System.out.println(fix.evaluate(fix.infixToPostfix(fix.readInfix())));
 	}
 
@@ -56,6 +57,7 @@ public class Postfix {
 				}
 			}
 		}
+		System.out.println("Evaluation");
 		return (int) popTop(expression);
 	}
 
@@ -91,6 +93,8 @@ public class Postfix {
 		while (!postFixStack.isEmpty()) {
 			postFix += popTop(postFixStack);
 		}
+		System.out.println("Postfix");
+		System.out.println("> " + postFix);
 		return postFix;
 	}
 
