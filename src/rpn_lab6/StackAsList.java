@@ -36,8 +36,7 @@ public class StackAsList implements Stack {
 		stackList = new List();
 	}
 
-	public String toString()
-	{
+	public String toString() {
 		return stackList.print("Top: ", " :Bottom");
 	}
 
