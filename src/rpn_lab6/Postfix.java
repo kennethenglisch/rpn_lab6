@@ -1,5 +1,8 @@
 package rpn_lab6;
 
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
 public class Postfix {
 
 	private StackAsList postFixStack;
@@ -13,6 +16,7 @@ public class Postfix {
 		rpn = fix.infixToPostfix(ifx);
 		System.out.println(rpn);
 		System.out.println(fix.evaluate(rpn));
+		System.out.println(fix.evaluate(fix.infixToPostfix(fix.readInfix())));
 	}
 
 	public int evaluate(String pfx) throws StackOverflow, StackUnderflow {
@@ -119,6 +123,30 @@ public class Postfix {
 		Object o = stack.top();
 		stack.pop();
 		return o;
+	}
+	
+	private String readInfix() throws StackOverflow, StackUnderflow 
+	{
+		Scanner scanner = new Scanner(System.in);
+		boolean finished = false;
+		System.out.println("Enter an infix expression.");
+		System.out.print("> ");
+		String ifx = scanner.nextLine().replaceAll(" ", "");
+		
+		while (!finished) 
+		{
+			if (ifx.matches(".*[a-zA-Z].*") || ifx.equals("") || ifx == null)
+			{
+				System.out.println("The infix expression you have entered is unvalid. You should not use any letters. Enter a new one. ");
+				System.out.print("> ");
+				ifx = scanner.nextLine().replaceAll(" ", "");
+			}
+			else finished = true;
+		}
+		
+		scanner.close();
+		
+		return ifx;
 	}
 
 }
