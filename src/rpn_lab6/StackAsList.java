@@ -40,5 +40,4 @@ public class StackAsList implements Stack {
 	{
 		return stackList.print("[ Top: ", " :Bottom ]");
 	}
-
 }
