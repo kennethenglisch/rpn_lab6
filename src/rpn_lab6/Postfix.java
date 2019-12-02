@@ -149,7 +149,7 @@ public class Postfix {
 		while (!finished) {
 			if (ifx.equals("") || ifx == null) {
 				System.out.println(
-						"The infix expression you have entered is unvalid. You should not use any letters. Enter a new one. ");
+						"The infix expression you have entered is unvalid. Enter a new one. ");
 				System.out.print("> ");
 				ifx = scanner.nextLine().replaceAll(" ", "");
 			} else
